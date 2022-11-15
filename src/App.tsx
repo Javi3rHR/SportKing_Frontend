@@ -1,9 +1,10 @@
 import './App.css';
+import LoginForm from './components/pure/forms/LoginForm';
 
 function App(): JSX.Element {
 	return (
 		<div className='App'>
-			<div className='h-10 w-10 bg-red-500'></div>
+			<LoginForm></LoginForm>
 		</div>
 	);
 }
