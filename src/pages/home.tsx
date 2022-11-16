@@ -1,3 +1,11 @@
-export default function Home(): JSX.Element {
-	return <div></div>;
-}
+import Navbar from '../components/pure/Navbar';
+
+const Home = (): JSX.Element => {
+	return (
+		<>
+			<Navbar />
+		</>
+	);
+};
+
+export default Home;

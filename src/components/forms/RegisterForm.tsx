@@ -1,21 +1,27 @@
 // import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import FormikInput from '../FormikInput';
-import FormikButton from '../FormikButton';
-import { Link, Navigate } from 'react-router-dom';
+import FormikInput from '../pure/FormikInput';
+import FormikButton from '../pure/FormikButton';
+import { Link } from 'react-router-dom';
+import Navbar from '../pure/Navbar';
 
 // Define the form schema
-const loginSchema = Yup.object().shape({
+const FormSchema = Yup.object().shape({
 	email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
 	username: Yup.string().required('Obligatorio'),
+	name: Yup.string().required('Obligatorio'),
 	password: Yup.string()
 		.required('Obligatorio')
 		.min(8, 'Contraseña demasiado corta'),
+	passwordConfirm: Yup.string().oneOf(
+		[Yup.ref('password'), null],
+		'Las contraseñas deben coincidir'
+	),
 });
 
 // Login form component
-const LoginForm = (): JSX.Element => {
+const RegisterForm = (): JSX.Element => {
 	const initialCredentials = {
 		email: '',
 		username: '',
@@ -26,9 +32,10 @@ const LoginForm = (): JSX.Element => {
 
 	return (
 		<>
+			<Navbar />
 			<Formik
 				initialValues={initialCredentials}
-				validationSchema={loginSchema}
+				validationSchema={FormSchema}
 				onSubmit={values => {
 					alert(JSON.stringify(values, null, 2));
 				}}
@@ -44,30 +51,37 @@ const LoginForm = (): JSX.Element => {
 					isSubmitting,
 				}) => (
 					<div className='relative flex min-h-screen flex-col justify-center overflow-hidden'>
-						<div className='m-auto w-full rounded-md bg-white p-6 shadow-md lg:max-w-md'>
-							<h1 className='text-center text-3xl font-semibold text-purple-700 underline'>
-								Inicia sesión
+						<div className='m-auto w-full rounded-md bg-slate-700 p-6 shadow-md lg:max-w-md'>
+							<h1 className='text-center text-3xl font-semibold text-white'>
+								Regístrate
 							</h1>
 							<Form onSubmit={handleSubmit} className='mt-6'>
 								<FormikInput name='username' label='Username' />
 								<FormikInput name='email' label='Email' />
+								<FormikInput name='name' label='Nombre' />
 								<FormikInput
 									type='password'
 									name='password'
 									label='Contraseña'
 								/>
+								<FormikInput
+									type='password'
+									name='passwordConfirm'
+									label='Confirmar Contraseña'
+								/>
+
 								<FormikButton
-									label='Login'
+									label='Registrarme'
 									type='submit'
 									disabled={isSubmitting}
 								/>
 							</Form>
-							<p className='mt-8 text-center text-xs font-light text-purple-600'>
+							<p className='mt-8 text-center text-xs font-light text-blue-600'>
 								<Link
-									to='/register'
+									to='/login'
 									className='font-medium hover:underline'
 								>
-									¿No tienes cuenta? Regístrate
+									Ya tienes cuenta? Inicia sesión
 								</Link>
 							</p>
 						</div>
@@ -77,4 +91,4 @@ const LoginForm = (): JSX.Element => {
 		</>
 	);
 };
-export default LoginForm;
+export default RegisterForm;
