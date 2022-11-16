@@ -50,41 +50,39 @@ const RegisterForm = (): JSX.Element => {
 					handleSubmit,
 					isSubmitting,
 				}) => (
-					<div className='relative flex min-h-screen flex-col justify-center overflow-hidden'>
-						<div className='m-auto w-full rounded-md bg-slate-700 p-6 shadow-md lg:max-w-md'>
-							<h1 className='text-center text-3xl font-semibold text-white'>
-								Regístrate
-							</h1>
-							<Form onSubmit={handleSubmit} className='mt-6'>
-								<FormikInput name='username' label='Username' />
-								<FormikInput name='email' label='Email' />
-								<FormikInput name='name' label='Nombre' />
-								<FormikInput
-									type='password'
-									name='password'
-									label='Contraseña'
-								/>
-								<FormikInput
-									type='password'
-									name='passwordConfirm'
-									label='Confirmar Contraseña'
-								/>
+					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-6 shadow-md'>
+						<h1 className='text-center text-3xl font-semibold text-white'>
+							Regístrate
+						</h1>
+						<Form onSubmit={handleSubmit} className='mt-6'>
+							<FormikInput name='username' label='Username' />
+							<FormikInput name='email' label='Email' />
+							<FormikInput name='name' label='Nombre' />
+							<FormikInput
+								type='password'
+								name='password'
+								label='Contraseña'
+							/>
+							<FormikInput
+								type='password'
+								name='passwordConfirm'
+								label='Confirmar Contraseña'
+							/>
 
-								<FormikButton
-									label='Registrarme'
-									type='submit'
-									disabled={isSubmitting}
-								/>
-							</Form>
-							<p className='mt-8 text-center text-xs font-light text-blue-600'>
-								<Link
-									to='/login'
-									className='font-medium hover:underline'
-								>
-									Ya tienes cuenta? Inicia sesión
-								</Link>
-							</p>
-						</div>
+							<FormikButton
+								label='Registrarme'
+								type='submit'
+								disabled={isSubmitting}
+							/>
+						</Form>
+						<p className='mt-8 text-center text-xs font-light text-blue-600'>
+							<Link
+								to='/login'
+								className='font-medium hover:underline'
+							>
+								Ya tienes cuenta? Inicia sesión
+							</Link>
+						</p>
 					</div>
 				)}
 			</Formik>
