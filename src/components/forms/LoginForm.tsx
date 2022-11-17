@@ -10,17 +10,17 @@ import { AxiosResponse } from 'axios';
 
 // Define the form schema
 const loginSchema = Yup.object().shape({
-	email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
+	// email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
 	username: Yup.string().required('Obligatorio'),
 	password: Yup.string()
 		.required('Obligatorio')
-		.min(8, 'Contraseña demasiado corta'),
+		.min(4, 'Contraseña demasiado corta'),
 });
 
 // Login form component
 const LoginForm = (): JSX.Element => {
 	const initialCredentials = {
-		email: '',
+		// email: '',
 		username: '',
 		password: '',
 	};
@@ -34,7 +34,7 @@ const LoginForm = (): JSX.Element => {
 				initialValues={initialCredentials}
 				validationSchema={loginSchema}
 				onSubmit={async values => {
-					login(values.email, values.password)
+					login(values.username, values.password)
 						.then(async (response: AxiosResponse) => {
 							if (response.status === 200) {
 								if (
@@ -46,14 +46,14 @@ const LoginForm = (): JSX.Element => {
 										response.data.token
 									);
 									// navigate('/');
-									alert(response.data.token);
+									alert(sessionStorage.getItem('token'));
 								} else {
 									throw new Error(
 										'Error generating Login Token'
 									);
 								}
 							} else {
-								throw new Error('Invalid Credentials');
+								alert('Credenciales invalidas');
 							}
 						})
 						.catch(error =>
@@ -80,7 +80,7 @@ const LoginForm = (): JSX.Element => {
 						</h1>
 						<Form onSubmit={handleSubmit} className='mt-6'>
 							<FormikInput name='username' label='Username' />
-							<FormikInput name='email' label='Email' />
+							{/* <FormikInput name='email' label='Email' /> */}
 							<FormikInput
 								type='password'
 								name='password'

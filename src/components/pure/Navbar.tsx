@@ -12,7 +12,7 @@ const Navbar = (): JSX.Element => {
 						SportKing 🟢
 					</Link>
 					<button
-						className='block cursor-pointer rounded border border-solid border-transparent bg-transparent px-3 py-1 text-xl leading-none outline-none focus:outline-none md:hidden'
+						className='sblock cursor-pointer rounded border border-solid border-transparent bg-transparent px-3 py-1 text-xl leading-none outline-none focus:outline-none md:hidden'
 						type='button'
 					>
 						<span className='relative block h-px w-6 rounded-sm bg-white'></span>

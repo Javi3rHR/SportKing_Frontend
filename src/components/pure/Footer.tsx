@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Footer = (): JSX.Element => (
-	<footer className='mt-20 rounded-lg bg-white p-4 shadow dark:bg-slate-700 md:px-20 md:py-8'>
+	<footer className='absolute bottom-0 mt-20 w-full rounded-lg bg-white p-4 shadow dark:bg-slate-700 md:px-20 md:py-8'>
 		<div className='sm:flex sm:items-center sm:justify-between'>
 			<Link
 				className='sm:mb-0text-sm mb-4 flex items-center font-bold uppercase leading-relaxed text-white'
@@ -32,7 +32,7 @@ const Footer = (): JSX.Element => (
 				</li>
 			</ul>
 		</div>
-		<hr className='my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8' />
+		<hr className='my-3 border-gray-200 dark:border-gray-700 sm:mx-auto' />
 		<span className='block text-sm text-gray-500 dark:text-gray-400 sm:text-center'>
 			© 2022 SportKing™ . All Rights Reserved.
 		</span>
