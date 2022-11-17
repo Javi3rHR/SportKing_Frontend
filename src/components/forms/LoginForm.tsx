@@ -33,15 +33,15 @@ const LoginForm = (): JSX.Element => {
 			<Formik
 				initialValues={initialCredentials}
 				validationSchema={loginSchema}
-				onSubmit={async values => {
+				onSubmit={values => {
 					login(values.username, values.password)
-						.then(async (response: AxiosResponse) => {
+						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
 								if (
 									response.data.token !== undefined &&
 									response.data.token !== null
 								) {
-									await sessionStorage.setItem(
+									sessionStorage.setItem(
 										'token',
 										response.data.token
 									);
@@ -74,8 +74,8 @@ const LoginForm = (): JSX.Element => {
 					handleSubmit,
 					isSubmitting,
 				}) => (
-					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-6 shadow-md'>
-						<h1 className='text-center text-3xl font-semibold text-white'>
+					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md'>
+						<h1 className='border-spacing-3 border-b-2 border-gray-400 pb-4 text-center text-3xl font-semibold text-white'>
 							Inicia sesión
 						</h1>
 						<Form onSubmit={handleSubmit} className='mt-6'>
@@ -86,6 +86,12 @@ const LoginForm = (): JSX.Element => {
 								name='password'
 								label='Contraseña'
 							/>
+							<Link
+								className='float-right pb-4 text-blue-500'
+								to='/recover-pass'
+							>
+								¿Olvidaste tu contraseña?
+							</Link>
 							<FormikButton
 								label='Login'
 								type='submit'

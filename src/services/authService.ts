@@ -10,15 +10,15 @@ export const login = async (username: string, password: string): Promise<any> =>
     return await axios.post('/users/authenticate', body);
     };
 
-export const register = async (username: string, name: string, email: string, password:string): Promise<any> => {
+export const register = async (username: string, email: string, password:string): Promise<any> => {
 
         const body = {
-            name,
             username,
+            // name,
             email,
             password,
         }
 
-        return await axios.post('/auth/register', body)
+        return await axios.post('/users/register', body)
 
     }

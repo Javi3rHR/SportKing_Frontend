@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = (): JSX.Element => {
 	return (
-		<nav className='relative mb-2 flex flex-wrap items-center justify-between rounded-lg bg-slate-700 px-2 py-5'>
+		<nav className='relative mb-2 flex flex-wrap items-center justify-between rounded-b-lg bg-slate-700 px-2 py-5'>
 			<div className='container mx-auto flex flex-wrap items-center justify-between px-20'>
 				<div className='relative flex w-full justify-between px-4  md:static md:block md:w-auto md:justify-start'>
 					<Link

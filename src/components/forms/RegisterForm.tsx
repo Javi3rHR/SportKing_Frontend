@@ -5,26 +5,28 @@ import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
 import { Link } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
+import { register } from '../../services/authService';
+import { AxiosResponse } from 'axios';
 
 // Define the form schema
 const FormSchema = Yup.object().shape({
 	email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
 	username: Yup.string().required('Obligatorio'),
-	name: Yup.string().required('Obligatorio'),
+	// name: Yup.string().required('Obligatorio'),
 	password: Yup.string()
 		.required('Obligatorio')
-		.min(8, 'Contraseña demasiado corta'),
-	passwordConfirm: Yup.string().oneOf(
-		[Yup.ref('password'), null],
-		'Las contraseñas deben coincidir'
-	),
+		.min(4, 'Contraseña demasiado corta'),
+	// passwordConfirm: Yup.string()
+	// 	.oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
+	// 	.required('Obligatorio'),
 });
 
 // Login form component
 const RegisterForm = (): JSX.Element => {
 	const initialCredentials = {
-		email: '',
 		username: '',
+		email: '',
+		// name: '',
 		password: '',
 	};
 
@@ -38,6 +40,20 @@ const RegisterForm = (): JSX.Element => {
 				validationSchema={FormSchema}
 				onSubmit={values => {
 					alert(JSON.stringify(values, null, 2));
+					register(
+						values.username,
+						values.email,
+						values.password
+						// values.name,
+					)
+						.then(async (response: AxiosResponse) => {
+							if (response.status === 200) {
+								alert(response.data);
+							} else {
+								alert('Credenciales invalidas');
+							}
+						})
+						.catch(error => console.error(error));
 				}}
 			>
 				{({
@@ -50,29 +66,32 @@ const RegisterForm = (): JSX.Element => {
 					handleSubmit,
 					isSubmitting,
 				}) => (
-					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-6 shadow-md'>
-						<h1 className='text-center text-3xl font-semibold text-white'>
+					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md'>
+						<h1 className='border-spacing-3 border-b-2 border-gray-400 pb-4 text-center text-3xl font-semibold text-white'>
 							Regístrate
 						</h1>
 						<Form onSubmit={handleSubmit} className='mt-6'>
 							<FormikInput name='username' label='Username' />
 							<FormikInput name='email' label='Email' />
-							<FormikInput name='name' label='Nombre' />
+							{/* <FormikInput name='name' label='Nombre' /> */}
 							<FormikInput
 								type='password'
 								name='password'
 								label='Contraseña'
 							/>
-							<FormikInput
+							{/* <FormikInput
 								type='password'
 								name='passwordConfirm'
 								label='Confirmar Contraseña'
-							/>
-
+							/> */}
+							<label className='my-4 block text-sm font-semibold text-gray-300'>
+								<input type='checkbox' className='mr-1' />
+								He leído y acepto la política de privacidad
+							</label>
 							<FormikButton
 								label='Registrarme'
 								type='submit'
-								disabled={isSubmitting}
+								// disabled={isSubmitting}
 							/>
 						</Form>
 						<p className='mt-8 text-center text-xs font-light text-blue-600'>
