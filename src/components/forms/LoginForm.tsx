@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
 import { login } from '../../services/authService';
 import { AxiosResponse } from 'axios';
+import { useState } from 'react';
 
 // Define the form schema
 const loginSchema = Yup.object().shape({
@@ -25,6 +26,8 @@ const LoginForm = (): JSX.Element => {
 		password: '',
 	};
 
+	const [submitMessage, setSubmitMessage] = useState('');
+
 	// const navigate = useNavigate();
 
 	return (
@@ -37,6 +40,7 @@ const LoginForm = (): JSX.Element => {
 					login(values.username, values.password)
 						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
+								setSubmitMessage('');
 								if (
 									response.data.token !== undefined &&
 									response.data.token !== null
@@ -53,15 +57,15 @@ const LoginForm = (): JSX.Element => {
 									);
 								}
 							} else {
-								alert('Credenciales invalidas');
+								throw new Error('Error logging in');
 							}
 						})
-						.catch(error =>
-							console.error(
-								// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-								`[LOGIN ERROR]: Something went wrong: ${error}`
-							)
-						);
+						.catch(function (error) {
+							if (error.response.status !== 200) {
+								// alert(error.response.data.message);
+								setSubmitMessage('Credenciales invalidas');
+							}
+						});
 				}}
 			>
 				{({
@@ -95,10 +99,12 @@ const LoginForm = (): JSX.Element => {
 							<FormikButton
 								label='Login'
 								type='submit'
-								disabled={isSubmitting}
+								disabled={isSubmitting && submitMessage === ''}
 							/>
 							{isSubmitting ? (
-								<p>Checking credentials...</p>
+								<p className='mt-2 text-red-600'>
+									{submitMessage}
+								</p>
 							) : null}
 						</Form>
 						<p className='mt-8 text-center text-xs font-light text-blue-600'>

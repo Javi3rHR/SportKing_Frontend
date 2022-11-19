@@ -3,10 +3,12 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
-import { Link, redirect } from 'react-router-dom';
+import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
 import { register } from '../../services/authService';
-import { Axios, AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
+import { render } from 'react-dom';
 
 // Define the form schema
 const FormSchema = Yup.object().shape({
@@ -30,6 +32,9 @@ const RegisterForm = (): JSX.Element => {
 		password: '',
 	};
 
+	const [submitMessage, setSubmitMessage] = useState('');
+	const navigate = useNavigate();
+
 	// const navigate = useNavigate();
 
 	return (
@@ -38,7 +43,7 @@ const RegisterForm = (): JSX.Element => {
 			<Formik
 				initialValues={initialCredentials}
 				validationSchema={FormSchema}
-				onSubmit={async values => {
+				onSubmit={values => {
 					// alert(JSON.stringify(values, null, 2));
 					register(
 						values.username,
@@ -48,16 +53,15 @@ const RegisterForm = (): JSX.Element => {
 					)
 						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
-								alert(JSON.stringify(values));
-								redirect('/login');
-								// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-							} else {
-								throw new Error('Error in registry');
+								setSubmitMessage('');
+								alert('Usuario registrado');
+								navigate('/login');
+								// window.location.href = '/login';
 							}
 						})
 						.catch(function (error) {
-							if (error.response.status === 409) {
-								alert(error.response.data.message);
+							if (error.response.status !== 200) {
+								setSubmitMessage(error.response.data.message);
 							}
 						});
 				}}
@@ -97,8 +101,13 @@ const RegisterForm = (): JSX.Element => {
 							<FormikButton
 								label='Registrarme'
 								type='submit'
-								// disabled={isSubmitting}
+								disabled={isSubmitting && submitMessage === ''}
 							/>
+							{isSubmitting ? (
+								<p className='mt-2 text-red-600'>
+									{submitMessage}
+								</p>
+							) : null}
 						</Form>
 						<p className='mt-8 text-center text-xs font-light text-blue-600'>
 							<Link
