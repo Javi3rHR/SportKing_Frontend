@@ -3,10 +3,10 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
 import { register } from '../../services/authService';
-import { AxiosResponse } from 'axios';
+import { Axios, AxiosResponse } from 'axios';
 
 // Define the form schema
 const FormSchema = Yup.object().shape({
@@ -38,22 +38,28 @@ const RegisterForm = (): JSX.Element => {
 			<Formik
 				initialValues={initialCredentials}
 				validationSchema={FormSchema}
-				onSubmit={values => {
-					alert(JSON.stringify(values, null, 2));
+				onSubmit={async values => {
+					// alert(JSON.stringify(values, null, 2));
 					register(
 						values.username,
 						values.email,
 						values.password
 						// values.name,
 					)
-						.then(async (response: AxiosResponse) => {
+						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
-								alert(response.data);
+								alert(JSON.stringify(values));
+								redirect('/login');
+								// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 							} else {
-								alert('Credenciales invalidas');
+								throw new Error('Error in registry');
 							}
 						})
-						.catch(error => console.error(error));
+						.catch(function (error) {
+							if (error.response.status === 409) {
+								alert(error.response.data.message);
+							}
+						});
 				}}
 			>
 				{({
