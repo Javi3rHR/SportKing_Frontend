@@ -12,7 +12,7 @@ const PublicValidationFragment = (
 	<Navigate replace to={PrivateRoutes.PRIVATE} />
 );
 
-// This is a guard that will redirect to the private route if the user is not logged in.
+// This is a guard that will redirect to the private route if the user is logged in.
 export const AuthGuard = ({ privateValidation }: Props) => {
 	const userState = useSelector((store: AppStore) => store.user);
 	return userState.name ? (
