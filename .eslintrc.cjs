@@ -25,5 +25,7 @@ module.exports = {
 	rules: {
 		'react/prop-types': 'off',
 		'@typescript-eslint/no-unused-vars': 'warn',
+		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/strict-boolean-expressions': 'off',
 	},
 };

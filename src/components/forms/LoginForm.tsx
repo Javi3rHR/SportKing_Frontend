@@ -5,9 +5,9 @@ import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
 import { Link } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
-import { login } from '../../services/authService';
 import { AxiosResponse } from 'axios';
 import { useState } from 'react';
+import { login } from '@/services';
 
 // Define the form schema
 const loginSchema = Yup.object().shape({

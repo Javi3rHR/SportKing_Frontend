@@ -1,3 +1,3 @@
-export * from './Reservation';
+export * from './reservation.model';
 export * from './routes';
 export * from './user.model';

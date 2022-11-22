@@ -5,7 +5,7 @@ import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
 import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
 import Navbar from '../pure/Navbar';
-import { register } from '../../services/authService';
+import { register } from '../../services/auth.service';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { render } from 'react-dom';
