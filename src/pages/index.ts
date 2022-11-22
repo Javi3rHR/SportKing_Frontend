@@ -1,2 +1,4 @@
 export * from './404/NotFoundPage';
-export { default as home } from './home';
+export * from './Home';
+export * from './Login';
+export * from './Register';

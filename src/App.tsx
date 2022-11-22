@@ -1,4 +1,4 @@
-import Footer from './components/pure/Footer';
+import { Footer } from './components';
 import { AppRoutes } from './routes/Routes';
 
 function App(): JSX.Element {

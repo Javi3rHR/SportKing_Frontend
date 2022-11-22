@@ -1,14 +1,12 @@
 // import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
-import FormikInput from '../pure/FormikInput';
-import FormikButton from '../pure/FormikButton';
-import { Link, Navigate, redirect, useNavigate } from 'react-router-dom';
-import Navbar from '../pure/Navbar';
-import { register } from '../../services/auth.service';
 import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
-import { render } from 'react-dom';
+import { Form, Formik } from 'formik';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+import { register } from '../../services/auth.service';
+import FormikButton from '../pure/FormikButton';
+import FormikInput from '../pure/FormikInput';
 
 // Define the form schema
 const FormSchema = Yup.object().shape({
@@ -39,7 +37,6 @@ const RegisterForm = (): JSX.Element => {
 
 	return (
 		<>
-			<Navbar />
 			<Formik
 				initialValues={initialCredentials}
 				validationSchema={FormSchema}

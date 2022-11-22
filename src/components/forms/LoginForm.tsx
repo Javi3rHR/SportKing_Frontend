@@ -4,7 +4,6 @@ import { Formik, Form } from 'formik';
 import FormikInput from '../pure/FormikInput';
 import FormikButton from '../pure/FormikButton';
 import { Link } from 'react-router-dom';
-import Navbar from '../pure/Navbar';
 import { AxiosResponse } from 'axios';
 import { useState } from 'react';
 import { login } from '@/services';
@@ -32,7 +31,6 @@ const LoginForm = (): JSX.Element => {
 
 	return (
 		<>
-			<Navbar />
 			<Formik
 				initialValues={initialCredentials}
 				validationSchema={loginSchema}

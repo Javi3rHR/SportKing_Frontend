@@ -1,4 +1,4 @@
-import Navbar from '../components/pure/Navbar';
+import Navbar from '../../components/pure/Navbar';
 
 const Home = (): JSX.Element => {
 	return (

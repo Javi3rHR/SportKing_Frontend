@@ -13,6 +13,6 @@ For building and running the application you need
 
 npm install
 
-## Running the application 
+## Running the application
 
 npm run dev
