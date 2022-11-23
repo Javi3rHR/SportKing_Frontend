@@ -1,7 +1,7 @@
 // export interface BackOfficeInterface {}
 
 const BackOffice = () => {
-	return <div>BackOffice</div>;
+	return <div>BackOffice HOME</div>;
 };
 
 export default BackOffice;

@@ -1,5 +1,12 @@
 export { default as BackOffice } from './BackOffice';
-export * from './Reservations/ReservationByUserId';
+export * from './Courts/TimeIntervalsByCourtId';
+export * from './Courts';
 export * from './Reservations';
+export * from './Sports/SportById/CourtsBySportId/CourtById';
+export * from './Sports/SportById/CourtsBySportId';
+export * from './Sports/SportById';
+export * from './Sports';
+export * from './Users/UserById/ReservationsByUserId/ReservationById';
+export * from './Users/UserById/ReservationsByUserId';
 export * from './Users/UserById';
 export * from './Users';
