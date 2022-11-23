@@ -31,6 +31,7 @@ export const AuthGuard = ({ privateValidation }: Props) => {
 	) : (
 		// Navega a login si no esta logueado
 		<Navigate replace to={PublicRoutes.LOGIN} />
+		// TODO Mostrar notistack con mensaje de error
 	);
 };
 
