@@ -8,20 +8,28 @@ interface Props {
 }
 
 const PrivateValidationFragment = <Outlet />;
+
+// Remplaza la url para navegar a la ruta privada
 const PublicValidationFragment = (
-	<Navigate replace to={PrivateRoutes.PRIVATE} />
+	<Navigate replace to={PrivateRoutes.BACKOFFICE} />
 );
 
-// This is a guard that will redirect to the private route if the user is logged in.
+/**
+ * El Guard se ejecuta cada vez que se navega a una ruta privada.
+ * Comprueba si existe un usuario en el store de redux.
+ * Si existe, se navega a la ruta privada.
+ * Si no existe, se navega a la ruta pública.
+ */
 export const AuthGuard = ({ privateValidation }: Props) => {
 	const userState = useSelector((store: AppStore) => store.user);
-	return userState.name ? (
+	return userState.username ? (
 		privateValidation ? (
 			PrivateValidationFragment
 		) : (
 			PublicValidationFragment
 		)
 	) : (
+		// Navega a login si no esta logueado
 		<Navigate replace to={PublicRoutes.LOGIN} />
 	);
 };
