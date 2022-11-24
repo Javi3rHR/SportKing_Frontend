@@ -12,7 +12,7 @@ module.exports = {
 		'plugin:react/recommended',
 		'standard-with-typescript',
 		'eslint-config-prettier',
-		'plugin:react/jsx-runtime'
+		'plugin:react/jsx-runtime',
 	],
 	overrides: [],
 	parser: '@typescript-eslint/parser',

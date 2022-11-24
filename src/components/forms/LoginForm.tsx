@@ -6,15 +6,15 @@ import FormikButton from '../pure/FormikButton';
 import { Link } from 'react-router-dom';
 import { AxiosResponse } from 'axios';
 import { useState } from 'react';
-import { login } from '@/services';
+import { login, UserByUsername } from '@/services';
+import { useDispatch } from 'react-redux';
+import { createUser } from '@/redux/states/user';
 
 // Define the form schema
 const loginSchema = Yup.object().shape({
 	// email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
 	username: Yup.string().required('Obligatorio'),
-	password: Yup.string()
-		.required('Obligatorio')
-		.min(4, 'Contraseña demasiado corta'),
+	password: Yup.string().required('Obligatorio').min(4, 'Contraseña demasiado corta'),
 });
 
 // Login form component
@@ -26,6 +26,7 @@ const LoginForm = (): JSX.Element => {
 	};
 
 	const [submitMessage, setSubmitMessage] = useState('');
+	const dispatch = useDispatch();
 
 	// const navigate = useNavigate();
 
@@ -36,24 +37,26 @@ const LoginForm = (): JSX.Element => {
 				validationSchema={loginSchema}
 				onSubmit={values => {
 					login(values.username, values.password)
-						.then((response: AxiosResponse) => {
+						.then(async (response: AxiosResponse) => {
 							if (response.status === 200) {
 								setSubmitMessage('');
 								if (
 									response.data.token !== undefined &&
 									response.data.token !== null
 								) {
-									sessionStorage.setItem(
-										'token',
-										response.data.token
-									);
+									sessionStorage.setItem('token', response.data.token);
 									// navigate('/');
 									alert(sessionStorage.getItem('token'));
 								} else {
-									throw new Error(
-										'Error generating Login Token'
-									);
+									throw new Error('Error generating Login Token');
 								}
+								await UserByUsername(values.username).then(
+									(response2: AxiosResponse) => {
+										const user = response2.data;
+										alert(user);
+										dispatch(createUser(user));
+									}
+								);
 							} else {
 								throw new Error('Error logging in');
 							}
@@ -83,15 +86,8 @@ const LoginForm = (): JSX.Element => {
 						<Form onSubmit={handleSubmit} className='mt-6'>
 							<FormikInput name='username' label='Username' />
 							{/* <FormikInput name='email' label='Email' /> */}
-							<FormikInput
-								type='password'
-								name='password'
-								label='Contraseña'
-							/>
-							<Link
-								className='float-right pb-4 text-blue-500'
-								to='/recover-pass'
-							>
+							<FormikInput type='password' name='password' label='Contraseña' />
+							<Link className='float-right pb-4 text-blue-500' to='/recover-pass'>
 								¿Olvidaste tu contraseña?
 							</Link>
 							<FormikButton
@@ -100,16 +96,11 @@ const LoginForm = (): JSX.Element => {
 								disabled={isSubmitting && submitMessage === ''}
 							/>
 							{isSubmitting ? (
-								<p className='mt-2 text-red-600'>
-									{submitMessage}
-								</p>
+								<p className='mt-2 text-red-600'>{submitMessage}</p>
 							) : null}
 						</Form>
 						<p className='mt-8 text-center text-xs font-light text-blue-600'>
-							<Link
-								to='/register'
-								className='font-medium hover:underline'
-							>
+							<Link to='/register' className='font-medium hover:underline'>
 								¿No tienes cuenta? Regístrate
 							</Link>
 						</p>

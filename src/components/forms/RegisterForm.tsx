@@ -13,9 +13,7 @@ const FormSchema = Yup.object().shape({
 	email: Yup.string().email('Formato incorrecto').required('Obligatorio'),
 	username: Yup.string().required('Obligatorio'),
 	// name: Yup.string().required('Obligatorio'),
-	password: Yup.string()
-		.required('Obligatorio')
-		.min(4, 'Contraseña demasiado corta'),
+	password: Yup.string().required('Obligatorio').min(4, 'Contraseña demasiado corta'),
 	// passwordConfirm: Yup.string()
 	// 	.oneOf([Yup.ref('password'), null], 'Las contraseñas deben coincidir')
 	// 	.required('Obligatorio'),
@@ -81,11 +79,7 @@ const RegisterForm = (): JSX.Element => {
 							<FormikInput name='username' label='Username' />
 							<FormikInput name='email' label='Email' />
 							{/* <FormikInput name='name' label='Nombre' /> */}
-							<FormikInput
-								type='password'
-								name='password'
-								label='Contraseña'
-							/>
+							<FormikInput type='password' name='password' label='Contraseña' />
 							{/* <FormikInput
 								type='password'
 								name='passwordConfirm'
@@ -101,16 +95,11 @@ const RegisterForm = (): JSX.Element => {
 								disabled={isSubmitting && submitMessage === ''}
 							/>
 							{isSubmitting ? (
-								<p className='mt-2 text-red-600'>
-									{submitMessage}
-								</p>
+								<p className='mt-2 text-red-600'>{submitMessage}</p>
 							) : null}
 						</Form>
 						<p className='mt-8 text-center text-xs font-light text-blue-600'>
-							<Link
-								to='/login'
-								className='font-medium hover:underline'
-							>
+							<Link to='/login' className='font-medium hover:underline'>
 								Ya tienes cuenta? Inicia sesión
 							</Link>
 						</p>

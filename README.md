@@ -7,7 +7,7 @@
 
 For building and running the application you need
 
-- [Node.js](https://nodejs.org/)
+-   [Node.js](https://nodejs.org/)
 
 ## Instalation
 

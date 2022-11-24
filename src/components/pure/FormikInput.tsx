@@ -6,17 +6,10 @@ interface FormikInputProps {
 	type?: string;
 }
 
-const FormikInput: React.FC<FormikInputProps> = ({
-	name,
-	label,
-	type = 'text',
-}) => {
+const FormikInput: React.FC<FormikInputProps> = ({ name, label, type = 'text' }) => {
 	return (
 		<div className='mb-2'>
-			<label
-				htmlFor={name}
-				className='block text-sm font-semibold text-white'
-			>
+			<label htmlFor={name} className='block text-sm font-semibold text-white'>
 				{label}
 			</label>
 			<Field
@@ -27,11 +20,7 @@ const FormikInput: React.FC<FormikInputProps> = ({
 				text-white focus:border-blue-400 focus:outline-none focus:ring
 				focus:ring-blue-300 focus:ring-opacity-50'
 			/>
-			<ErrorMessage
-				name={name}
-				component='div'
-				className='text-red-600'
-			/>
+			<ErrorMessage name={name} component='div' className='text-red-600' />
 		</div>
 	);
 };

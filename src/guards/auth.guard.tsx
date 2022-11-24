@@ -7,12 +7,11 @@ interface Props {
 	privateValidation: boolean;
 }
 
+// Renderiza elementos hijos de la ruta
 const PrivateValidationFragment = <Outlet />;
 
 // Remplaza la url para navegar a la ruta privada
-const PublicValidationFragment = (
-	<Navigate replace to={PrivateRoutes.BACKOFFICE} />
-);
+const PublicValidationFragment = <Navigate replace to={PrivateRoutes.BACKOFFICE} />;
 
 /**
  * El Guard se ejecuta cada vez que se navega a una ruta privada.

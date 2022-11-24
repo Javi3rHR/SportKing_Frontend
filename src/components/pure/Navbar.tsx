@@ -20,10 +20,7 @@ const Navbar = (): JSX.Element => {
 						<span className='relative mt-1 block h-px w-6 rounded-sm bg-white'></span>
 					</button>
 				</div>
-				<div
-					className='flex-grow items-center md:flex'
-					id='example-navbar-warning'
-				>
+				<div className='flex-grow items-center md:flex' id='example-navbar-warning'>
 					<ul className='ml-auto flex list-none flex-col gap-2 md:flex-row'>
 						<li className='nav-item'>
 							<Link

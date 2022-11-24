@@ -20,8 +20,13 @@ const userHasRequiredRole = (userRoles: Role[], requiredRoles: Role[]) => {
 function RoleGuard({ roles }: Props): JSX.Element {
 	const userState = useSelector((store: AppStore) => store.user);
 	return userHasRequiredRole(userState.roles, roles) ? (
+		// El outlet permite renderizar los componentes hijos de este componente
 		<Outlet />
 	) : (
+		/**
+		 * Si el usuario no tiene el rol requerido intenta acceder a la ruta privada
+		 * por si estuviera logeado anteriormente, pero será redirigido a la página de inicio
+		 * */
 		<Navigate replace to={PrivateRoutes.PRIVATE} />
 	);
 }
