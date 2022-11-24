@@ -37,7 +37,9 @@ function App(): JSX.Element {
 							</Route>
 
 							{/* Rutas protegidas para usuarios con rol ADMIN */}
-							<Route element={<RoleGuard role={Roles.ADMIN} />}>
+							<Route
+								element={<RoleGuard roles={[Roles.ADMIN]} />}
+							>
 								<Route
 									path={PrivateRoutes.BACKOFFICE}
 									element={<BackOffice />}
