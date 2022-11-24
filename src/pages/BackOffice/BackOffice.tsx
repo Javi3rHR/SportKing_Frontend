@@ -1,7 +1,14 @@
 // export interface BackOfficeInterface {}
 
+import { Logout } from '@/components';
+
 const BackOffice = () => {
-	return <div>BackOffice HOME</div>;
+	return (
+		<>
+			<Logout />
+			<div>BackOffice HOME</div>;
+		</>
+	);
 };
 
 export default BackOffice;

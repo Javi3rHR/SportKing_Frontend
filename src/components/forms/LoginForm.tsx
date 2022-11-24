@@ -1,14 +1,16 @@
 // import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
-import FormikInput from '../pure/FormikInput';
-import FormikButton from '../pure/FormikButton';
-import { Link } from 'react-router-dom';
-import { AxiosResponse } from 'axios';
-import { useState } from 'react';
-import { login, UserByUsername } from '@/services';
-import { useDispatch } from 'react-redux';
+import { PrivateRoutes, UserInfo } from '@/models';
 import { createUser } from '@/redux/states/user';
+import { login, UserByUsername } from '@/services';
+import { AxiosResponse } from 'axios';
+import { Form, Formik } from 'formik';
+import { stringify } from 'querystring';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+import FormikButton from '../pure/FormikButton';
+import FormikInput from '../pure/FormikInput';
 
 // Define the form schema
 const loginSchema = Yup.object().shape({
@@ -28,8 +30,6 @@ const LoginForm = (): JSX.Element => {
 	const [submitMessage, setSubmitMessage] = useState('');
 	const dispatch = useDispatch();
 
-	// const navigate = useNavigate();
-
 	return (
 		<>
 			<Formik
@@ -47,16 +47,18 @@ const LoginForm = (): JSX.Element => {
 									sessionStorage.setItem('token', response.data.token);
 									// navigate('/');
 									alert(sessionStorage.getItem('token'));
+									await UserByUsername(values.username).then(
+										async (response: AxiosResponse) => {
+											const user: UserInfo = response.data;
+											alert(JSON.stringify(user));
+											dispatch(createUser(user));
+											// TODO CAMBIAR POR NAVIGATE
+											window.location.href = PrivateRoutes.BACKOFFICE;
+										}
+									);
 								} else {
 									throw new Error('Error generating Login Token');
 								}
-								await UserByUsername(values.username).then(
-									(response2: AxiosResponse) => {
-										const user = response2.data;
-										alert(user);
-										dispatch(createUser(user));
-									}
-								);
 							} else {
 								throw new Error('Error logging in');
 							}

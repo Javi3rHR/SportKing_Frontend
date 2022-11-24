@@ -1,4 +1,5 @@
 import axios from '../utils/config/axios.config';
+import axiosAuth from '../utils/config/axiosAuth.config';
 
 export const login = async (username: string, password: string): Promise<any> => {
 	const body = {
@@ -21,5 +22,5 @@ export const register = async (username: string, email: string, password: string
 };
 
 export const UserByUsername = async (username: string): Promise<any> => {
-	return await axios.get(`/users/username/${username}`);
+	return await axiosAuth.get(`/users/username/${username}`);
 }
