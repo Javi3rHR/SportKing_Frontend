@@ -6,7 +6,7 @@ import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import FormikButton from '../pure/FormikButton';
 import FormikInput from '../pure/FormikInput';
@@ -50,8 +50,7 @@ const LoginForm = (): JSX.Element => {
 									) {
 										const user: UserInfo = response.data.user;
 										dispatch(createUser(user));
-										// TODO CAMBIAR POR NAVIGATE
-										window.location.href = PrivateRoutes.BACKOFFICE;
+										<Navigate replace to={PrivateRoutes.BACKOFFICE} />;
 									}
 								} else {
 									throw new Error('Error generating Login Token');

@@ -15,14 +15,6 @@ const Register = lazy(async () => await import('./pages/Register/Register'));
 const Private = lazy(async () => await import('./pages/Private/Private'));
 const BackOffice = lazy(async () => await import('./pages/BackOffice/BackOffice'));
 
-// function LoggedReddirection() {
-// 	if (userLoggedIn() && sessionStorage.getItem('token') !== null) {
-// 		return <Route path={PublicRoutes.LOGIN} element={<BackOffice />} />;
-// 	} else {
-// 		return <Route path={PublicRoutes.LOGIN} element={<Login />} />;
-// 	}
-// }
-
 function App(): JSX.Element {
 	return (
 		<div className='App'>

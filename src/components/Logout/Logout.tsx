@@ -1,17 +1,41 @@
 import { clearLocalStorage } from '@/utils';
 import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { PublicRoutes } from '../../models';
 import { resetUser, UserKey } from '../../redux/states/user';
 
 function Logout() {
 	// const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const MySwal = withReactContent(Swal);
+
 	const logOut = () => {
-		clearLocalStorage(UserKey);
-		dispatch(resetUser());
-		// navigate(PublicRoutes.LOGIN);
-		window.location.href = PublicRoutes.LOGIN;
+		MySwal.fire({
+			title: '¿Estás seguro de cerrar sesión?',
+			showDenyButton: true,
+			confirmButtonText: 'Sí',
+			denyButtonText: 'No',
+			customClass: {
+				actions: 'my-actions',
+				confirmButton: 'order-2',
+				denyButton: 'order-3',
+			},
+		})
+			.then(result => {
+				if (result.isConfirmed) {
+					clearLocalStorage(UserKey);
+					dispatch(resetUser());
+					<Navigate replace to={PublicRoutes.LOGIN} />;
+					// enqueueSnackbar('Sesión cerrada correctamente');
+				}
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
+
 	return (
 		<button
 			onClick={logOut}
