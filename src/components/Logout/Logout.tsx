@@ -1,4 +1,4 @@
-import { clearLocalStorage } from '@/utils';
+import { clearLocalStorage, SnackbarUtilitiesConfigurator } from '@/utils';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -23,12 +23,12 @@ function Logout() {
 				denyButton: 'order-3',
 			},
 		})
-			.then(result => {
+			.then(async result => {
 				if (result.isConfirmed) {
 					clearLocalStorage(UserKey);
 					dispatch(resetUser());
 					<Navigate replace to={PublicRoutes.LOGIN} />;
-					// enqueueSnackbar('Sesión cerrada correctamente');
+					<SnackbarUtilitiesConfigurator />;
 				}
 			})
 			.catch(err => {

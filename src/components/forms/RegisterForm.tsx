@@ -49,9 +49,7 @@ const RegisterForm = (): JSX.Element => {
 						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
 								setSubmitMessage('');
-								alert('Usuario registrado');
 								navigate('/login');
-								// window.location.href = '/login';
 							}
 						})
 						.catch(function (error) {

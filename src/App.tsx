@@ -7,6 +7,7 @@ import { PrivateRoutes, PublicRoutes, Roles } from './models';
 import store from './redux/store';
 import { RoutesWithNotFound } from './utils';
 import LinearProgress from '@mui/material/LinearProgress';
+import { SnackbarProvider } from 'notistack';
 
 // Lazy loading en el componente padre de cada ruta para mejorar el rendimiento
 const Home = lazy(async () => await import('./pages/Home/Home'));
@@ -20,31 +21,36 @@ function App(): JSX.Element {
 		<div className='App'>
 			<Suspense fallback={<LinearProgress />}>
 				<div className='relative min-h-screen pb-52'>
-					<Provider store={store}>
-						<RoutesWithNotFound>
-							<Route path='/' element={<Home />} />
+					<SnackbarProvider maxSnack={4}>
+						<Provider store={store}>
+							<RoutesWithNotFound>
+								<Route path='/' element={<Home />} />
 
-							<Route element={<LoginRedirectGuard />}>
-								<Route path={PublicRoutes.LOGIN} element={<Login />} />
-							</Route>
-
-							<Route path={PublicRoutes.REGISTER} element={<Register />} />
-
-							{/* Rutas protegidas para usuarios logeados */}
-							<Route element={<AuthGuard privateValidation={true} />}>
-								<Route path={`${PrivateRoutes.PRIVATE}/*`} element={<Private />} />
-
-								{/* Rutas protegidas para usuarios con rol ADMIN */}
-								<Route element={<RoleGuard roles={[Roles.ADMIN]} />}>
-									<Route
-										path={PrivateRoutes.BACKOFFICE}
-										element={<BackOffice />}
-									/>
+								<Route element={<LoginRedirectGuard />}>
+									<Route path={PublicRoutes.LOGIN} element={<Login />} />
 								</Route>
-							</Route>
-						</RoutesWithNotFound>
-					</Provider>
-					<Footer />
+
+								<Route path={PublicRoutes.REGISTER} element={<Register />} />
+
+								{/* Rutas protegidas para usuarios logeados */}
+								<Route element={<AuthGuard privateValidation={true} />}>
+									<Route
+										path={`${PrivateRoutes.PRIVATE}/*`}
+										element={<Private />}
+									/>
+
+									{/* Rutas protegidas para usuarios con rol ADMIN */}
+									<Route element={<RoleGuard roles={[Roles.ADMIN]} />}>
+										<Route
+											path={PrivateRoutes.BACKOFFICE}
+											element={<BackOffice />}
+										/>
+									</Route>
+								</Route>
+							</RoutesWithNotFound>
+						</Provider>
+						<Footer />
+					</SnackbarProvider>
 				</div>
 			</Suspense>
 		</div>
