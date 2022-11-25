@@ -1,10 +1,9 @@
 // import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes, UserInfo } from '@/models';
 import { createUser } from '@/redux/states/user';
-import { login, UserByUsername } from '@/services';
+import { login } from '@/services';
 import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
-import { stringify } from 'querystring';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -45,17 +44,15 @@ const LoginForm = (): JSX.Element => {
 									response.data.token !== null
 								) {
 									sessionStorage.setItem('token', response.data.token);
-									// navigate('/');
-									alert(sessionStorage.getItem('token'));
-									await UserByUsername(values.username).then(
-										async (response: AxiosResponse) => {
-											const user: UserInfo = response.data;
-											alert(JSON.stringify(user));
-											dispatch(createUser(user));
-											// TODO CAMBIAR POR NAVIGATE
-											window.location.href = PrivateRoutes.BACKOFFICE;
-										}
-									);
+									if (
+										response.data.user !== undefined &&
+										response.data.user !== null
+									) {
+										const user: UserInfo = response.data.user;
+										dispatch(createUser(user));
+										// TODO CAMBIAR POR NAVIGATE
+										window.location.href = PrivateRoutes.BACKOFFICE;
+									}
 								} else {
 									throw new Error('Error generating Login Token');
 								}
