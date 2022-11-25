@@ -86,7 +86,7 @@ const LoginForm = (): JSX.Element => {
 							<FormikInput name='username' label='Username' />
 							{/* <FormikInput name='email' label='Email' /> */}
 							<FormikInput type='password' name='password' label='Contraseña' />
-							<Link className='float-right pb-4 text-blue-500' to='/recover-pass'>
+							<Link className='float-right pb-4 text-blue-500' to='/login'>
 								¿Olvidaste tu contraseña?
 							</Link>
 							<FormikButton

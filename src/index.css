@@ -22,3 +22,21 @@ a {
 	font-family: 'burtons';
 	src: url('../public/Burtons.otf');
 }
+
+
+::-webkit-scrollbar-track
+{
+	background-color: rgb(30 41 59);
+}
+
+::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #dfe6e9;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #5d7997;
+	border-radius: 10px;
+}
