@@ -8,6 +8,7 @@ import store from './redux/store';
 import { RoutesWithNotFound } from './utils';
 import LinearProgress from '@mui/material/LinearProgress';
 import { SnackbarProvider } from 'notistack';
+// import { Home } from './pages';
 
 // Lazy loading en el componente padre de cada ruta para mejorar el rendimiento
 const Home = lazy(async () => await import('./pages/Home/Home'));

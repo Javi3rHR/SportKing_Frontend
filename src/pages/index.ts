@@ -13,6 +13,6 @@ export * from './BackOffice/Users';
 export * from './BackOffice';
 export * from './Home';
 export * from './Login';
+export * from './Private/UserProfile';
 export * from './Private';
 export * from './Register';
-export * from './index';
