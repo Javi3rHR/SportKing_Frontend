@@ -5,7 +5,7 @@ import { Footer } from './components';
 import { AuthGuard, LoginRedirectGuard, RoleGuard } from './guards';
 import { PrivateRoutes, PublicRoutes, Roles } from './models';
 import store from './redux/store';
-import { RoutesWithNotFound } from './utils';
+import { RoutesWithNotFound, SnackbarUtilitiesConfigurator } from './utils';
 import LinearProgress from '@mui/material/LinearProgress';
 import { SnackbarProvider } from 'notistack';
 // import { Home } from './pages';
@@ -23,6 +23,7 @@ function App(): JSX.Element {
 			<Suspense fallback={<LinearProgress />}>
 				<div className='relative min-h-screen pb-52'>
 					<SnackbarProvider maxSnack={4}>
+						<SnackbarUtilitiesConfigurator />
 						<Provider store={store}>
 							<RoutesWithNotFound>
 								<Route path='/' element={<Home />} />
