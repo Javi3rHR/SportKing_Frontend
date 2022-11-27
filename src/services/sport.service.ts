@@ -21,7 +21,7 @@ export const createSport = async (sport: Sport) => {
 /* PUT */
 
 export const updateSport = async (sport: Sport) => {
-    return await axios.put(`api/sports/${sport.sport_id}`, sport);
+    return await axios.put(`api/sports`, sport);
 }
 
 /* DELETE */
