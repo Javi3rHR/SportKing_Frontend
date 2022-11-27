@@ -27,7 +27,8 @@ function Logout() {
 				if (result.isConfirmed) {
 					clearLocalStorage(UserKey);
 					dispatch(resetUser());
-					<Navigate replace to={PublicRoutes.LOGIN} />;
+					window.location.href = PublicRoutes.LOGIN;
+					// <Navigate replace to={PublicRoutes.LOGIN} />;
 					<SnackbarUtilitiesConfigurator />;
 				}
 			})
