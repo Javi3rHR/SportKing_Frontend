@@ -1,8 +1,12 @@
 // import { useNavigate } from 'react-router-dom';
+import { PublicRoutes } from '@/models';
+import { UserKey } from '@/redux/states/user';
+import { clearLocalStorage } from '@/utils';
 import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 import { register } from '../../services/auth.service';
 import FormikButton from '../pure/FormikButton';
@@ -49,7 +53,30 @@ const RegisterForm = (): JSX.Element => {
 						.then((response: AxiosResponse) => {
 							if (response.status === 200) {
 								setSubmitMessage('');
-								navigate('/login');
+								Swal.fire({
+									title: '¿Quieres iniciar sesión?',
+									showDenyButton: true,
+									confirmButtonText: 'Sí',
+									denyButtonText: 'No',
+									customClass: {
+										actions: 'my-actions',
+										confirmButton: 'order-2',
+										denyButton: 'order-3',
+									},
+								})
+									.then(async result => {
+										if (result.isConfirmed) {
+											navigate('/login');
+											// <Navigate replace to={PublicRoutes.LOGIN} />;
+										} else {
+											clearLocalStorage(UserKey);
+											clearLocalStorage('token');
+											window.location.href = '/login';
+										}
+									})
+									.catch(err => {
+										console.log(err);
+									});
 							}
 						})
 						.catch(function (error) {
@@ -108,3 +135,10 @@ const RegisterForm = (): JSX.Element => {
 	);
 };
 export default RegisterForm;
+function dispatch(arg0: any) {
+	throw new Error('Function not implemented.');
+}
+
+function resetUser(): any {
+	throw new Error('Function not implemented.');
+}

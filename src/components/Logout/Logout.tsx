@@ -29,7 +29,6 @@ function Logout() {
 					dispatch(resetUser());
 					window.location.href = PublicRoutes.LOGIN;
 					// <Navigate replace to={PublicRoutes.LOGIN} />;
-					<SnackbarUtilitiesConfigurator />;
 				}
 			})
 			.catch(err => {
