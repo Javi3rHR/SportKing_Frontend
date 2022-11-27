@@ -2,6 +2,7 @@
 import { PrivateRoutes, UserInfo } from '@/models';
 import { createUser } from '@/redux/states/user';
 import { login } from '@/services';
+import { persistLocalStorage } from '@/utils';
 import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
@@ -43,7 +44,7 @@ const LoginForm = (): JSX.Element => {
 									response.data.token !== undefined &&
 									response.data.token !== null
 								) {
-									sessionStorage.setItem('token', response.data.token);
+									persistLocalStorage('token', response.data.token);
 									if (
 										response.data.user !== undefined &&
 										response.data.user !== null

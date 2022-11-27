@@ -1,6 +1,5 @@
 import { clearLocalStorage, SnackbarUtilitiesConfigurator } from '@/utils';
 import { useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { PublicRoutes } from '../../models';
@@ -26,6 +25,7 @@ function Logout() {
 			.then(async result => {
 				if (result.isConfirmed) {
 					clearLocalStorage(UserKey);
+					clearLocalStorage('token');
 					dispatch(resetUser());
 					window.location.href = PublicRoutes.LOGIN;
 					// <Navigate replace to={PublicRoutes.LOGIN} />;

@@ -19,8 +19,3 @@ export const register = async (username: string, email: string, password: string
 
 	return await axios.post('/users/register', body);
 };
-
-export const userLoggedIn = (): boolean => {
-	const token = localStorage.getItem('token');
-	return !!token;
-}
