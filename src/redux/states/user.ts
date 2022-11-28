@@ -11,7 +11,7 @@ export const EmptyUserState: UserInfo = {
 
 export const UserKey = 'user';
 
-export const userSlice = createSlice({
+export const userSlice: any = createSlice({
 	name: 'user',
 	initialState:
 		localStorage.getItem('user') != null

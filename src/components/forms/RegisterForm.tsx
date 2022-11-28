@@ -5,7 +5,7 @@ import { clearLocalStorage } from '@/utils';
 import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 import { register } from '../../services/auth.service';
@@ -33,7 +33,7 @@ const RegisterForm = (): JSX.Element => {
 	};
 
 	const [submitMessage, setSubmitMessage] = useState('');
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	// const navigate = useNavigate();
 
@@ -65,13 +65,12 @@ const RegisterForm = (): JSX.Element => {
 									},
 								})
 									.then(async result => {
+										clearLocalStorage(UserKey);
+										clearLocalStorage('token');
 										if (result.isConfirmed) {
-											navigate('/login');
-											// <Navigate replace to={PublicRoutes.LOGIN} />;
+											window.location.href = PublicRoutes.LOGIN; // <Navigate replace to={PublicRoutes.LOGIN} />;
 										} else {
-											clearLocalStorage(UserKey);
-											clearLocalStorage('token');
-											window.location.href = '/login';
+											window.location.href = PublicRoutes.HOME;
 										}
 									})
 									.catch(err => {
@@ -134,11 +133,5 @@ const RegisterForm = (): JSX.Element => {
 		</>
 	);
 };
-export default RegisterForm;
-function dispatch(arg0: any) {
-	throw new Error('Function not implemented.');
-}
 
-function resetUser(): any {
-	throw new Error('Function not implemented.');
-}
+export default RegisterForm;
