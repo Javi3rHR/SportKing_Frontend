@@ -12,6 +12,7 @@ function Private() {
 				{/* <Route path='/' element={<Navigate replace to={PrivateRoutes.PRIVATE} />} /> */}
 				<Route path={PrivateRoutes.USER_PROFILE} element={<UserProfile />} />
 			</Routes>
+			<div>Private HOME</div>;
 			<Logout />
 		</>
 	);

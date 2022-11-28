@@ -8,4 +8,5 @@ export const PrivateRoutes = {
 	PRIVATE: 'private',
 	BACKOFFICE: 'backoffice',
 	USER_PROFILE: 'user-profile',
+	USERS: 'users',
 };
