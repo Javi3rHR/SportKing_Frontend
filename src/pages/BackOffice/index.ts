@@ -1,3 +1,4 @@
+export * from './AdminHome';
 export { default as BackOffice } from './BackOffice';
 export * from './Courts/TimeIntervalsByCourtId';
 export * from './Courts';
@@ -10,3 +11,4 @@ export * from './Users/UserById/ReservationsByUserId/ReservationById';
 export * from './Users/UserById/ReservationsByUserId';
 export * from './Users/UserById';
 export * from './Users';
+export * from './components';
