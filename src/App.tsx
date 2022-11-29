@@ -20,7 +20,7 @@ function App(): JSX.Element {
 	return (
 		<div className='App'>
 			<Suspense fallback={<LinearProgress />}>
-				<div className='relative min-h-screen pb-52'>
+				<div className='relative min-h-screen'>
 					<SnackbarProvider maxSnack={4}>
 						<SnackbarUtilitiesConfigurator />
 						<Provider store={store}>
@@ -50,7 +50,6 @@ function App(): JSX.Element {
 								</Route>
 							</RoutesWithNotFound>
 						</Provider>
-						<Footer />
 					</SnackbarProvider>
 				</div>
 			</Suspense>

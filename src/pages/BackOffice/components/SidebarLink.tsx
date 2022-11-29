@@ -11,7 +11,7 @@ export default function SidebarLink({ label, path, icon }: SidebarLinkInterface)
 	// const active = pathname === path;
 
 	return (
-		<li className='rounded-sm'>
+		<li className='rounded-sm hover:bg-slate-600'>
 			<Link to={path} className='flex items-center space-x-3 rounded-md p-2'>
 				{icon}
 				<span className='text-gray-100'>{label}</span>

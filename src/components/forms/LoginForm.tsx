@@ -51,7 +51,10 @@ const LoginForm = (): JSX.Element => {
 									) {
 										const user: UserInfo = response.data.user;
 										dispatch(createUser(user));
-										<Navigate replace to={PrivateRoutes.BACKOFFICE} />;
+										<Navigate
+											replace
+											to={`${PrivateRoutes.BACKOFFICE}/${PrivateRoutes.ADMINHOME}`}
+										/>;
 									}
 								} else {
 									throw new Error('Error generating Login Token');
@@ -78,7 +81,7 @@ const LoginForm = (): JSX.Element => {
 					handleSubmit,
 					isSubmitting,
 				}) => (
-					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md'>
+					<div className='m-auto mt-14 mb-60 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md '>
 						<h1 className='border-spacing-3 border-b-2 border-gray-400 pb-4 text-center text-3xl font-semibold text-white'>
 							Inicia sesión
 						</h1>

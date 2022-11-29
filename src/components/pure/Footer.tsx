@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const Footer = (): JSX.Element => (
-	<footer className='absolute bottom-0 mt-20 w-full rounded-t-lg bg-white p-5 shadow dark:bg-slate-700 md:px-20 md:py-8'>
+	<footer className='absolute bottom-0 w-full rounded-t-lg bg-white p-5 shadow dark:bg-slate-700 md:px-20 md:py-8'>
 		<div className='sm:flex sm:items-center sm:justify-between '>
 			<Link
 				className='sm:mb-0text-sm mb-4 flex items-center font-bold uppercase leading-relaxed text-white'

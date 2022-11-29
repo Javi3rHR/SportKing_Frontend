@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { clearLocalStorage } from '@/utils';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
@@ -5,7 +6,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { PublicRoutes } from '../../models';
 import { resetUser, UserKey } from '../../redux/states/user';
 
-function Logout() {
+function Logout({ open }: { open: boolean }) {
 	// const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const MySwal = withReactContent(Swal);
@@ -36,6 +37,16 @@ function Logout() {
 			});
 	};
 
-	return <button onClick={logOut}>Cerrar Sesión</button>;
+	return (
+		<li
+			onClick={logOut}
+			className={`cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-300 hover:bg-slate-600`}
+		>
+			<div className='flex items-center space-x-3 rounded-md'>
+				<img src={`/src/pages/BackOffice/components/assets/Logout.png`} className='fill-' />
+				<span className={`${!open && 'hidden'} origin-left duration-200 `}>Logout</span>
+			</div>
+		</li>
+	);
 }
 export default Logout;

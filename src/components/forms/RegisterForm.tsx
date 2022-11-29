@@ -95,7 +95,7 @@ const RegisterForm = (): JSX.Element => {
 					handleSubmit,
 					isSubmitting,
 				}) => (
-					<div className='m-auto mt-14 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md'>
+					<div className='m-auto mb-60 mt-14 w-full max-w-md rounded-md bg-slate-700 p-12 shadow-md'>
 						<h1 className='border-spacing-3 border-b-2 border-gray-400 pb-4 text-center text-3xl font-semibold text-white'>
 							Regístrate
 						</h1>

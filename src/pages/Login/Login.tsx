@@ -1,10 +1,11 @@
-import { LoginForm, Navbar } from '@/components';
+import { Footer, LoginForm, Navbar } from '@/components';
 
 const Login = () => {
 	return (
 		<>
 			<Navbar />
 			<LoginForm />;
+			<Footer />
 		</>
 	);
 };
