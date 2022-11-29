@@ -1,4 +1,4 @@
-import { clearLocalStorage, SnackbarUtilitiesConfigurator } from '@/utils';
+import { clearLocalStorage } from '@/utils';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -36,6 +36,6 @@ function Logout() {
 			});
 	};
 
-	return <button onClick={logOut}>Log Out</button>;
+	return <button onClick={logOut}>Cerrar Sesión</button>;
 }
 export default Logout;
