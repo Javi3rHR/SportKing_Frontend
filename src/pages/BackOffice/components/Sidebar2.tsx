@@ -35,7 +35,7 @@ const Sidebar2 = () => {
 							!open && 'scale-0'
 						}`}
 					>
-						Admin BackOffice
+						Administrador
 					</h1>
 				</div>
 				<ul className='pt-6'>

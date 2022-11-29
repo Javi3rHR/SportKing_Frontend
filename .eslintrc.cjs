@@ -27,5 +27,6 @@ module.exports = {
 		'@typescript-eslint/no-unused-vars': 'warn',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/strict-boolean-expressions': 'off',
+		'@typescript-eslint/restrict-template-expressions': 'off',
 	},
 };
