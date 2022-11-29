@@ -1,7 +1,7 @@
 const AdminHome = () => {
 	return (
 		<div className='h-screen flex-1 p-7 text-gray-100'>
-			<h1 className='text-3xl font-semibold '>Home Page</h1>
+			<h1 className='text-3xl font-semibold '>Datos Generales</h1>
 			<div className='container mx-auto mt-12'>
 				<div className='mb-6 grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3'>
 					<div className='w-full rounded-lg bg-white px-4 py-5 shadow'>
