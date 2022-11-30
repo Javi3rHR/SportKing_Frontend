@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { getUsers } from '@/services';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 
 const columns = [
-	{ field: 'user_id', headerName: 'ID' },
-	{ field: 'username', headerName: 'Username', width: 200 },
+	{ field: 'acciones', headerName: 'Acciones', width: 140 },
+	{ field: 'user_id', headerName: 'ID', width: 70 },
+	{ field: 'username', headerName: 'Username', width: 150 },
+	{ field: 'name', headerName: 'Nombre', width: 250 },
 	{ field: 'email', headerName: 'Email', width: 250 },
 	{ field: 'phone', headerName: 'Teléfono', width: 200 },
 ];
@@ -28,18 +30,31 @@ const DataTable = () => {
 	}, []);
 
 	return (
-		<Box sx={{ height: 500, width: '100%' }}>
+		<Box sx={{ height: 500, width: '100%' }} className='mt-3'>
 			<DataGrid
 				rows={tableData}
 				columns={columns}
 				getRowId={(tableData: any) => tableData.user_id}
 				disableSelectionOnClick
 				components={{ Toolbar: GridToolbar }}
-				className='bg-slate-700'
+				className='bg-slate-700 pt-1'
 				sx={{
 					color: 'white',
 					border: '1px solid #1F2937',
-					fontSize: '1rem',
+					'& .MuiToolbar-root': {
+						color: 'white',
+					},
+					'& .MuiDataGrid-cell': {
+						fontWeight: 'normal',
+						// backgroundColor: '#1F2937',
+						fontSize: '1rem',
+					},
+					'& .MuiDataGrid-columnHeaders': {
+						fontWeight: 'bold',
+						fontSize: '1.2rem',
+						// backgroundColor: '#1F2937',
+					},
+					'& .MuiDataGrid-footerContainer': {},
 				}}
 			/>
 		</Box>
