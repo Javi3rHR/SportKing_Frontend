@@ -2,8 +2,9 @@ import axios from '../utils/config/axios.config';
 
 /* GET */
 
-export const getUsers = async () => {
-    return await axios.get('/users');
+export const getUsers = async (): Promise<any> => {
+    const response = await axios.get('/users');
+    return response;
 }
 
 export const getUserById = async (id: number) => {
@@ -11,7 +12,7 @@ export const getUserById = async (id: number) => {
 }
 
 export const getUserByUsername = async (username: string) => {
-    return await axios.get(`/users/usernamee/${username}}`);
+    return await axios.get(`/users/username/${username}}`);
 }
 
 

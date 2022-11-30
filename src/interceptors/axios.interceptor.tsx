@@ -6,9 +6,10 @@ import { axiosConfig as axios, SnackbarUtilities } from '@/utils';
 // Interceptor for axios requests and responses to add headers and handle errors
 export const AxiosInterceptor = () => {
 	const updateHeaders = (request: AxiosRequestConfig) => {
-		const token = localStorage.getItem('token');
+		const token = localStorage.getItem('token') ?? '';
+		const jwt = JSON.parse(token);
 		const newHeaders = {
-			Authorization: `Bearer ${token ?? ''}`,
+			Authorization: `Bearer ${jwt.token ?? ''}`,
 			'Content-Type': 'application/json',
 		};
 		request.headers = newHeaders;
@@ -17,7 +18,9 @@ export const AxiosInterceptor = () => {
 
 	// Cada petición que se haga se le añade el token a menos que sea una petición de login o registro
 	axios.interceptors.request.use(request => {
-		if (request.url?.includes('register' || 'authenticate')) return request;
+		if (request.url?.includes('authenticate')) return request;
+		if (request.url?.includes('register')) return request;
+		// return request;
 		return updateHeaders(request);
 	});
 
