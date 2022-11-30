@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import { getUsers } from '@/services';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
