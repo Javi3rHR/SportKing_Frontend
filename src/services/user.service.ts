@@ -1,7 +1,6 @@
 import axios from '../utils/config/axios.config';
 
 /* GET */
-
 export const getUsers = async (): Promise<any> => {
     const response = await axios.get('/users');
     return response;
@@ -15,11 +14,9 @@ export const getUserByUsername = async (username: string) => {
     return await axios.get(`/users/username/${username}}`);
 }
 
-
-/* PUT */
-
-export const updateUser = async (id: number) => {
-    return await axios.put(`/users/${id}`);
+/* POST */
+export const createUser = async (user: any) => {
+    return await axios.post('/users/register', user);
 }
 
 /* DELETE */

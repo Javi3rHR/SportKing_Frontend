@@ -1,38 +1,8 @@
-import { RegisterForm } from '@/components';
-import { Box, Button, Modal } from '@mui/material';
+import { Button, Modal } from '@mui/material';
 import { lazy, useState } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 
 const DataTable = lazy(async () => await import('../components/DataGrid'));
-// Sweetalert with Register User Form
-// const FormSwal = withReactContent(Swal);
-// const addUser = () => {
-// 	FormSwal.fire({
-// 		title: 'Nuevo Usuario',
-// 		showCancelButton: true,
-// 		confirmButtonText: 'Añadir',
-// 		cancelButtonText: 'Cancelar',
-// 		customClass: {
-// 			actions: 'my-actions',
-// 			confirmButton: 'order-2',
-// 			cancelButton: 'order-3',
-// 		},
-// 	})
-// 		.then(async result => {
-// 			if (result.isConfirmed) {
-// 				console.log('Añadir usuario');
-// 			}
-// 			if (result.isDenied) {
-// 				console.log('Cancelar');
-// 			}
-// 		})
-// 		.catch(err => {
-// 			console.log(err);
-// 		});
-// };
-
-// Modal with form to add new user
+const CreateUserForm = lazy(async () => await import('./components/CreateUserForm'));
 
 const Users = () => {
 	const [open, setOpen] = useState(false);
@@ -57,7 +27,7 @@ const Users = () => {
 					aria-labelledby='modal-modal-title'
 					aria-describedby='modal-modal-description'
 				>
-					<RegisterForm />
+					<CreateUserForm handleClose={handleClose} />
 				</Modal>
 			</div>
 		</>

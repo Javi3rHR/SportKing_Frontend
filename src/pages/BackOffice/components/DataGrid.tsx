@@ -42,7 +42,7 @@ const DataTable = () => {
 					color: 'white',
 					border: '1px solid #1F2937',
 					'& .MuiToolbar-root': {
-						color: 'white',
+						color: '#D1D5DB',
 					},
 					'& .MuiDataGrid-cell': {
 						fontWeight: 'normal',
@@ -54,7 +54,9 @@ const DataTable = () => {
 						fontSize: '1.2rem',
 						// backgroundColor: '#1F2937',
 					},
-					'& .MuiDataGrid-footerContainer': {},
+					'& .css-1knaqv7-MuiButtonBase-root-MuiButton-root ': {
+						color: '#D1D5DB',
+					},
 				}}
 			/>
 		</Box>
