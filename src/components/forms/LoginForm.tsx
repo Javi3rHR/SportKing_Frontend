@@ -1,5 +1,5 @@
 // import { useNavigate } from 'react-router-dom';
-import { PrivateRoutes, UserInfo } from '@/models';
+import { UserInfo } from '@/models';
 import { createUser } from '@/redux/states/user';
 import { login } from '@/services';
 import { persistLocalStorage } from '@/utils';
@@ -7,7 +7,7 @@ import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import FormikButton from '../pure/FormikButton';
 import FormikInput from '../pure/FormikInput';
