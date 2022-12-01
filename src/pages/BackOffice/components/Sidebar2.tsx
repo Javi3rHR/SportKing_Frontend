@@ -42,12 +42,12 @@ const Sidebar2 = () => {
 					{Menus.map((Menu, index) => (
 						<li
 							key={index}
-							className={`cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-300 hover:bg-slate-600
+							className={`cursor-pointer items-center gap-x-4 rounded-md text-sm text-gray-300 hover:bg-slate-600
               ${Menu.gap ? 'mt-9' : 'mt-2'}`}
 						>
 							<Link
 								to={String(Menu.path)}
-								className='flex items-center space-x-3 rounded-md'
+								className='flex items-center space-x-3 rounded-md p-2'
 							>
 								<img
 									src={`/src/pages/BackOffice/components/assets/${Menu.src}.png`}

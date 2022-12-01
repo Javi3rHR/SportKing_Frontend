@@ -27,8 +27,7 @@ export const AxiosInterceptor = () => {
 	// Cada respuesta que se reciba se comprueba si es un error y se muestra el mensaje de error
 	axios.interceptors.response.use(
 		response => {
-			console.log('response', response);
-			// SnackbarUtilities.success('Success');
+			// console.log('response', response);
 			return response;
 		},
 		async error => {

@@ -11,4 +11,7 @@ export const PrivateRoutes = {
 	USER_PROFILE: 'user-profile',
 	USERS: 'users',
 	RESERVATIONS: 'reservations',
+	SPORTS: 'sports',
+	COURTS: 'courts',
+	TIME_INTERVALS: 'time-intervals',
 };

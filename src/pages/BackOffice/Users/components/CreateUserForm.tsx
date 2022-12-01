@@ -1,10 +1,10 @@
 // import { useNavigate } from 'react-router-dom';
 import { FormikButton, FormikInput } from '@/components';
 import { createUser } from '@/services';
+import { SnackbarUtilities } from '@/utils';
 import { AxiosResponse } from 'axios';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
-import Swal from 'sweetalert2';
 import * as Yup from 'yup';
 
 // Define the form schema
@@ -50,7 +50,8 @@ const CreateUserForm = ({ handleClose }: any): JSX.Element => {
 							if (response.status === 200) {
 								setSubmitMessage('');
 								handleClose();
-								await Swal.fire('Usuario creado con éxito');
+								// await Swal.fire('Usuario creado con éxito');
+								SnackbarUtilities.success('Usuario creado con éxito');
 							}
 						})
 						.catch(function (error) {
