@@ -30,7 +30,7 @@ const DataTable = () => {
 	}, []);
 
 	return (
-		<Box sx={{ height: 500, width: '100%' }} className='mt-3'>
+		<Box sx={{ height: 600, width: '100%' }} className='mt-3'>
 			<DataGrid
 				rows={tableData}
 				columns={columns}

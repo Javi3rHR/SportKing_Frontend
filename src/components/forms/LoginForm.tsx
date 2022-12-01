@@ -51,10 +51,7 @@ const LoginForm = (): JSX.Element => {
 									) {
 										const user: UserInfo = response.data.user;
 										dispatch(createUser(user));
-										<Navigate
-											replace
-											to={`${PrivateRoutes.BACKOFFICE}/${PrivateRoutes.ADMINHOME}`}
-										/>;
+										// <Navigate replace to={`${PrivateRoutes.BACKOFFICE}`} />;
 									}
 								} else {
 									throw new Error('Error generating Login Token');

@@ -6,7 +6,11 @@ import { Navigate, Outlet } from 'react-router-dom';
 // Navega a la ruta privada si el usuario esta logueado
 export const LoginRedirectGuard = () => {
 	const userState = useSelector((store: AppStore) => store.user);
-	return userState.username ? <Navigate replace to={PrivateRoutes.BACKOFFICE} /> : <Outlet />;
+	return userState.username ? (
+		<Navigate replace to={`${PrivateRoutes.BACKOFFICE}/${PrivateRoutes.ADMINHOME}`} />
+	) : (
+		<Outlet />
+	);
 };
 
 export default LoginRedirectGuard;
