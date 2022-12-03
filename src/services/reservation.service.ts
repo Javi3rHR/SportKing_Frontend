@@ -2,7 +2,7 @@ import axios from '../utils/config/axios.config';
 
 /* GET */
 
-export const getReservations = async () => {
+export const getReservations = async (): Promise<any> => {
     return await axios.get('api/reservations');
 }
 

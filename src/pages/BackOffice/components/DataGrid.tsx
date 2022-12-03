@@ -2,13 +2,21 @@
 import { Box } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 
-const DataTable = ({ tableData, columns }: any) => {
+const DataTable = ({ tableData, columns, rowId }: any) => {
 	return (
 		<Box sx={{ height: 600, width: '100%' }} className='mt-3'>
 			<DataGrid
-				rows={tableData}
+				// Mapea los datos de la tabla
+				rows={tableData.map((row: any) => {
+					return {
+						...row,
+						user: row.user.username,
+						time_interval: `${row.time_interval.start_time} - ${row.time_interval.end_time}`,
+						paid: row.paid ? 'Si' : 'No',
+					};
+				})}
 				columns={columns}
-				getRowId={(tableData: any) => tableData.user_id}
+				getRowId={rowId}
 				disableSelectionOnClick
 				components={{ Toolbar: GridToolbar }}
 				className='bg-slate-700 pt-1'

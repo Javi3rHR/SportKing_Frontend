@@ -14,6 +14,7 @@ const columns = [
 
 const UsersGrid = (): JSX.Element => {
 	const [tableData, setTableData] = useState([]);
+	const rowId = (dataTable: any) => dataTable.user_id;
 
 	useEffect(() => {
 		getUsers()
@@ -27,7 +28,7 @@ const UsersGrid = (): JSX.Element => {
 			});
 	}, []);
 
-	return <DataTable tableData={tableData} columns={columns} />;
+	return <DataTable tableData={tableData} columns={columns} rowId={rowId} />;
 };
 
 export default UsersGrid;
