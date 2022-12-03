@@ -1,34 +1,8 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import { getUsers } from '@/services';
 import { Box } from '@mui/material';
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { AxiosResponse } from 'axios';
-import { useEffect, useState } from 'react';
 
-const columns = [
-	{ field: 'acciones', headerName: 'Acciones', width: 140 },
-	{ field: 'user_id', headerName: 'ID', width: 70 },
-	{ field: 'username', headerName: 'Username', width: 150 },
-	{ field: 'name', headerName: 'Nombre', width: 250 },
-	{ field: 'email', headerName: 'Email', width: 250 },
-	{ field: 'phone', headerName: 'Teléfono', width: 200 },
-];
-
-const DataTable = () => {
-	const [tableData, setTableData] = useState([]);
-
-	useEffect(() => {
-		getUsers()
-			.then((response: AxiosResponse) => {
-				if (response.status === 200) {
-					setTableData(response.data);
-				}
-			})
-			.catch(error => {
-				console.log(error);
-			});
-	}, []);
-
+const DataTable = ({ tableData, columns }: any) => {
 	return (
 		<Box sx={{ height: 600, width: '100%' }} className='mt-3'>
 			<DataGrid

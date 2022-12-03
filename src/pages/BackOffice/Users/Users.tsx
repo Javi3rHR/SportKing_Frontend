@@ -1,7 +1,7 @@
 import { Button, Modal } from '@mui/material';
 import { lazy, useState } from 'react';
 
-const DataTable = lazy(async () => await import('../components/DataGrid'));
+const UsersGrid = lazy(async () => await import('./components/UsersGrid'));
 const CreateUserForm = lazy(async () => await import('./components/CreateUserForm'));
 
 const Users = () => {
@@ -17,7 +17,7 @@ const Users = () => {
 					<Button variant='outlined' onClick={handleOpen}>
 						Añadir
 					</Button>
-					<DataTable />
+					<UsersGrid />
 				</div>
 			</div>
 			<div>
