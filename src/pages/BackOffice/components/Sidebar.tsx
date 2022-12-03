@@ -1,5 +1,4 @@
 import { HomeIcon } from '@/assets';
-import { Logout } from '@/components';
 import { PrivateRoutes } from '@/models';
 import SidebarLink from './SidebarLink';
 

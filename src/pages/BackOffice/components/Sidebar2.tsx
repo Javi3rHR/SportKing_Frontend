@@ -11,7 +11,7 @@ const Sidebar2 = () => {
 		{ title: 'Reservas ', src: 'Calendar', path: PrivateRoutes.RESERVATIONS },
 		{ title: 'Deportes', src: 'Sports', path: PrivateRoutes.SPORTS },
 		{ title: 'Pistas', src: 'Courts', path: PrivateRoutes.COURTS },
-		{ title: 'Setting', src: 'Setting' },
+		{ title: 'Horarios', src: 'Time_Intervals', path: PrivateRoutes.TIME_INTERVALS },
 	];
 
 	return (

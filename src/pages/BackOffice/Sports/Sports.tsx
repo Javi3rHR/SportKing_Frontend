@@ -6,7 +6,9 @@ const Sports = () => {
 	return (
 		<div className='h-screen flex-1 p-7 text-gray-100'>
 			<h1 className='text-3xl font-semibold '>Deportes</h1>
-			<div className='w-full p-10'>{<SportsGrid />}</div>
+			<div className='w-full p-10'>
+				<SportsGrid />
+			</div>
 		</div>
 	);
 };

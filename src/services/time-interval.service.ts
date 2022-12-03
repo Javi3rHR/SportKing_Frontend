@@ -3,7 +3,11 @@ import { axiosConfig as axios } from "@/utils";
 
 /* GET */
 
-export const getTimeIntervals = async (courtId: number, date: Date) => {
+export const getTimeIntervals = async () => {
+    return await axios.get(`api/time_intervals`);
+}
+
+export const getTimeIntervalsByCourtIdAndDate = async (courtId: number, date: Date) => {
     return await axios.get(`api/courts/${courtId}/time_intervals?reservationDate=${date.toLocaleDateString('en-GB')}`);
 }
 
