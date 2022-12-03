@@ -10,11 +10,18 @@ const columns = [
 	{ field: 'name', headerName: 'Nombre', width: 250 },
 	{ field: 'email', headerName: 'Email', width: 250 },
 	{ field: 'phone', headerName: 'Teléfono', width: 200 },
+	{ field: 'roles', headerName: 'Roles', width: 250 },
 ];
 
 const UsersGrid = (): JSX.Element => {
 	const [tableData, setTableData] = useState([]);
 	const rowId = (dataTable: any) => dataTable.user_id;
+	const rows = tableData.map((row: any) => {
+		return {
+			...row,
+			roles: row.roles.map((role: any) => role.name).join(', '),
+		};
+	});
 
 	useEffect(() => {
 		getUsers()
@@ -28,7 +35,7 @@ const UsersGrid = (): JSX.Element => {
 			});
 	}, []);
 
-	return <DataTable rows={tableData} columns={columns} rowId={rowId} />;
+	return <DataTable rows={rows} columns={columns} rowId={rowId} />;
 };
 
 export default UsersGrid;
