@@ -7,9 +7,9 @@ const columns = [
 	{ field: 'acciones', headerName: 'Acciones', width: 140 },
 	{ field: 'id', headerName: 'ID', width: 70 },
 	{ field: 'date', headerName: 'Fecha', width: 150 },
+	{ field: 'time_interval', headerName: 'Hora', width: 150 },
+	{ field: 'user', headerName: 'Usuario', width: 200 },
 	{ field: 'paid', headerName: 'Pagado', width: 150 },
-	{ field: 'user', headerName: 'Usuario', width: 150 },
-	{ field: 'time_interval', headerName: 'Intervalo de tiempo', width: 300 },
 ];
 
 const ReservationsGrid = () => {
