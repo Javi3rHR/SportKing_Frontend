@@ -9,6 +9,8 @@ const Sidebar2 = () => {
 		{ title: 'Home', src: 'Chart_fill', path: PrivateRoutes.ADMINHOME },
 		{ title: 'Usuarios', src: 'User', gap: true, path: PrivateRoutes.USERS },
 		{ title: 'Reservas ', src: 'Calendar', path: PrivateRoutes.RESERVATIONS },
+		{ title: 'Deportes', src: 'Sports', path: PrivateRoutes.SPORTS },
+		{ title: 'Pistas', src: 'Courts', path: PrivateRoutes.COURTS },
 		{ title: 'Setting', src: 'Setting' },
 	];
 

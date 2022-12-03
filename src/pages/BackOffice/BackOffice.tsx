@@ -3,11 +3,13 @@
 import { PrivateRoutes } from '@/models';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Sidebar2 } from './components';
 
+const Sidebar2 = lazy(async () => await import('./components/Sidebar2'));
 const Users = lazy(async () => await import('./Users/Users'));
 const AdminHome = lazy(async () => await import('./AdminHome/AdminHome'));
 const Reservations = lazy(async () => await import('./Reservations/Reservations'));
+const Sports = lazy(async () => await import('./Sports/Sports'));
+const Courts = lazy(async () => await import('./Courts/Courts'));
 
 function BackOffice() {
 	return (
@@ -17,6 +19,8 @@ function BackOffice() {
 				<Route path={PrivateRoutes.ADMINHOME} element={<AdminHome />} />
 				<Route path={PrivateRoutes.USERS} element={<Users />} />
 				<Route path={PrivateRoutes.RESERVATIONS} element={<Reservations />} />
+				<Route path={PrivateRoutes.SPORTS} element={<Sports />} />
+				<Route path={PrivateRoutes.COURTS} element={<Courts />} />
 			</Routes>
 		</div>
 	);
