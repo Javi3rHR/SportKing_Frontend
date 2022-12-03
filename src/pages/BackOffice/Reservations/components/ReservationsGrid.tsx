@@ -6,10 +6,12 @@ import DataTable from '../../components/DataGrid';
 const columns = [
 	{ field: 'acciones', headerName: 'Acciones', width: 140 },
 	{ field: 'id', headerName: 'ID', width: 70 },
+	{ field: 'paid', headerName: 'Pagado', width: 150 },
 	{ field: 'date', headerName: 'Fecha', width: 150 },
 	{ field: 'time_interval', headerName: 'Hora', width: 150 },
 	{ field: 'user', headerName: 'Usuario', width: 200 },
-	{ field: 'paid', headerName: 'Pagado', width: 150 },
+	{ field: 'sport', headerName: 'Deporte', width: 150 },
+	{ field: 'court', headerName: 'Pista', width: 150 },
 ];
 
 const ReservationsGrid = () => {

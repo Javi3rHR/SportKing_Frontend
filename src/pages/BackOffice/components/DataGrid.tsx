@@ -13,6 +13,8 @@ const DataTable = ({ tableData, columns, rowId }: any) => {
 						user: row.user.username,
 						time_interval: `${row.time_interval.start_time} - ${row.time_interval.end_time}`,
 						paid: row.paid ? 'Si' : 'No',
+						court: row.time_interval.court.name,
+						sport: row.time_interval.court.sport.sport_name,
 					};
 				})}
 				columns={columns}
