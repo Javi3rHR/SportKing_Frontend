@@ -28,7 +28,7 @@ const UsersGrid = (): JSX.Element => {
 			});
 	}, []);
 
-	return <DataTable tableData={tableData} columns={columns} rowId={rowId} />;
+	return <DataTable rows={tableData} columns={columns} rowId={rowId} />;
 };
 
 export default UsersGrid;

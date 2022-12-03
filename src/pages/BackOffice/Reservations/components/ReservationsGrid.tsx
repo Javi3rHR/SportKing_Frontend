@@ -17,6 +17,16 @@ const columns = [
 const ReservationsGrid = () => {
 	const [tableData, setTableData] = useState([]);
 	const rowId = (tableData: any) => tableData.id;
+	const rows = tableData.map((row: any) => {
+		return {
+			...row,
+			user: row.user.username,
+			time_interval: `${row.time_interval.start_time} - ${row.time_interval.end_time}`,
+			paid: row.paid ? 'Si' : 'No',
+			court: row.time_interval.court.name,
+			sport: row.time_interval.court.sport.sport_name,
+		};
+	});
 
 	useEffect(() => {
 		getReservations()
@@ -31,7 +41,7 @@ const ReservationsGrid = () => {
 			});
 	}, []);
 
-	return <DataTable tableData={tableData} columns={columns} rowId={rowId} />;
+	return <DataTable columns={columns} rowId={rowId} rows={rows} />;
 };
 
 export default ReservationsGrid;
