@@ -17,7 +17,7 @@ const FormSchema = Yup.object().shape({
 });
 
 // Login form component
-const CreateUserForm = ({ handleClose, handleUpdate }: any): JSX.Element => {
+const CreateUserForm = ({ handleClose }: any): JSX.Element => {
 	const initialCredentials = {
 		username: '',
 		email: '',
@@ -50,7 +50,6 @@ const CreateUserForm = ({ handleClose, handleUpdate }: any): JSX.Element => {
 							if (response.status === 200) {
 								setSubmitMessage('');
 								handleClose();
-								handleUpdate();
 								// await Swal.fire('Usuario creado con éxito');
 								SnackbarUtilities.success('Usuario creado con éxito');
 								location.reload();

@@ -1,24 +1,58 @@
+import { deleteUser } from '@/services';
+import { SharingInformationService } from '@/services/sharing-information.service';
 import { Button, Modal } from '@mui/material';
 import { lazy, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const UsersGrid = lazy(async () => await import('./components/UsersGrid'));
 const CreateUserForm = lazy(async () => await import('./components/CreateUserForm'));
 
 const Users = () => {
 	const [open, setOpen] = useState(false);
+	const [rowId, setRowId] = useState(0);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	// Render the grid when handleUpdate is called
-	const [update, setUpdate] = useState(false);
-	const handleUpdate = () => setUpdate(!update);
+	// handle delete
 	const handleDelete = () => {
-		console.log('Delete');
+		Swal.fire({
+			title: '¿Estás seguro?',
+			text: 'No podrás revertir esta acción',
+			icon: 'warning',
+			showDenyButton: true,
+			confirmButtonText: 'Sí',
+			denyButtonText: 'No',
+			customClass: {
+				actions: 'my-actions',
+				confirmButton: 'order-2',
+				denyButton: 'order-3',
+			},
+		})
+			.then(async result => {
+				if (result.isConfirmed) {
+					deleteUser(rowId)
+						.then(() => {
+							location.reload();
+						})
+						.catch(error => {
+							console.log(error);
+						});
+				}
+			})
+			.catch(err => {
+				console.log(err);
+			});
 	};
 
+	const subscription$ = SharingInformationService.getSubject();
+
 	useEffect(() => {
-		setUpdate(false);
-	}, [update]);
+		subscription$.subscribe((data: any) => {
+			// console.log(data);
+			setRowId(data);
+			// alert(`El id del usuario es: ${rowId}`);
+		});
+	}, [subscription$]);
 
 	return (
 		<>
@@ -41,7 +75,7 @@ const Users = () => {
 					aria-labelledby='modal-modal-title'
 					aria-describedby='modal-modal-description'
 				>
-					<CreateUserForm handleClose={handleClose} handleUpdate={handleUpdate} />
+					<CreateUserForm handleClose={handleClose} />
 				</Modal>
 			</div>
 		</>

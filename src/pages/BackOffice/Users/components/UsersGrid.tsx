@@ -11,33 +11,6 @@ const UsersGrid = (): JSX.Element => {
 	rowsRef.current = tableData;
 
 	const columns = [
-		// {
-		// 	field: 'editar',
-		// 	headerName: '',
-		// 	width: 100,
-		// 	renderCell: (params: any) => (
-		// 		<button
-		// 			className='rounded bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700'
-		// 			// onClick={}
-		// 		>
-		// 			Editar
-		// 		</button>
-		// 	),
-		// },
-		// // utton to delete user
-		// {
-		// 	field: 'eliminar',
-		// 	headerName: '',
-		// 	width: 100,
-		// 	renderCell: () => (
-		// 		<button
-		// 			className='rounded bg-red-500 py-2 px-4 font-bold text-white hover:bg-red-700'
-		// 			// onClick={handleDelete(1)}
-		// 		>
-		// 			X
-		// 		</button>
-		// 	),
-		// },
 		{ field: 'user_id', headerName: 'ID', width: 70 },
 		{ field: 'username', headerName: 'Username', width: 150 },
 		{ field: 'name', headerName: 'Nombre', width: 250 },

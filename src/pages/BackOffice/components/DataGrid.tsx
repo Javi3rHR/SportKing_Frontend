@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
+import { SharingInformationService } from '@/services/sharing-information.service';
 import { Box } from '@mui/material';
 import { DataGrid, GridSelectionModel, GridToolbar } from '@mui/x-data-grid';
 import { useState } from 'react';
@@ -21,8 +22,8 @@ const DataTable = ({ rows, columns, rowId }: any) => {
 				components={{ Toolbar: GridToolbar }}
 				className='bg-slate-700 pt-1'
 				onSelectionModelChange={newSelectionModel => {
+					SharingInformationService.setSubject(newSelectionModel);
 					setSelectionModel(newSelectionModel);
-					console.log(newSelectionModel);
 				}}
 				selectionModel={selectionModel}
 				sx={{
