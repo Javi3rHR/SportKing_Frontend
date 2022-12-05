@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 const TimeIntervalsGrid = lazy(async () => await import('./components/TimeIntervalsGrid'));
 
+// Componente principal de la página de horarios
 const TimeIntervals = () => {
 	return (
 		<div className='h-screen flex-1 p-7 text-gray-100'>

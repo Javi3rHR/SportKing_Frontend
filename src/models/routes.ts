@@ -14,4 +14,5 @@ export const PrivateRoutes = {
 	SPORTS: 'sports',
 	COURTS: 'courts',
 	TIME_INTERVALS: 'time-intervals',
+	USER_RESERVATIONS: 'user-reservations',
 };

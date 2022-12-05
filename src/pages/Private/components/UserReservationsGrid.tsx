@@ -1,10 +1,9 @@
-import { getReservations } from '@/services';
+import DataTable from '@/pages/BackOffice/components/DataGrid';
+import { getReservationsByUserId } from '@/services';
 import { AxiosResponse } from 'axios';
-import { useState, useEffect } from 'react';
-import DataTable from '../../components/DataGrid';
+import { useEffect, useState } from 'react';
 
 const columns = [
-	{ field: 'id', headerName: 'ID', width: 70 },
 	{ field: 'paid', headerName: 'Pagado', width: 150 },
 	{ field: 'date', headerName: 'Fecha', width: 150 },
 	{ field: 'time_interval', headerName: 'Hora', width: 150 },
@@ -13,9 +12,9 @@ const columns = [
 	{ field: 'court', headerName: 'Pista', width: 150 },
 ];
 
-const ReservationsGrid = () => {
+const UserReservationsGrid = () => {
 	const [tableData, setTableData] = useState([]);
-	const rowId = (tableData: any) => tableData.id;
+	const rowId = (tableData: any) => `${tableData.date}+${tableData.time_interval}`;
 	const rows = tableData.map((row: any) => {
 		return {
 			...row,
@@ -26,9 +25,10 @@ const ReservationsGrid = () => {
 			sport: row.time_interval.court.sport.sport_name,
 		};
 	});
+	const userid = JSON.parse(localStorage.getItem('user') ?? '').user_id;
 
 	useEffect(() => {
-		getReservations()
+		getReservationsByUserId(userid)
 			.then((response: AxiosResponse) => {
 				if (response.status === 200) {
 					// console.log(response.data);
@@ -43,4 +43,4 @@ const ReservationsGrid = () => {
 	return <DataTable columns={columns} rowId={rowId} rows={rows} />;
 };
 
-export default ReservationsGrid;
+export default UserReservationsGrid;

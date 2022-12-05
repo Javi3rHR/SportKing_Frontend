@@ -1,20 +1,25 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { Logout } from '@/components';
 import { PrivateRoutes } from '@/models';
-import HomeIcon from '@mui/icons-material/Home';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+
 const SidebarUser = () => {
 	const [open, setOpen] = useState(true);
 	const user = JSON.parse(localStorage.getItem('user') ?? '{}');
 	const Menus = [
-		{ title: 'Home', icon: <HomeIcon />, path: PrivateRoutes.PRIVATE },
 		{
 			title: 'Mi cuenta',
-			gap: true,
-			path: PrivateRoutes.USERS,
+			path: PrivateRoutes.USER_PROFILE,
+			gap: 0,
 			icon: <PeopleAltIcon />,
+		},
+		{
+			title: 'Mis reservas',
+			path: PrivateRoutes.USER_RESERVATIONS,
+			icon: <EventNoteIcon />,
 		},
 	];
 
