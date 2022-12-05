@@ -1,9 +1,8 @@
-// import { SnackbarUtilities } from '@/utils';
 import { getValidationError } from '@/utils/get-validation-error';
 import { AxiosRequestConfig } from 'axios';
 import { axiosConfig as axios, SnackbarUtilities } from '@/utils';
 
-// Interceptor for axios requests and responses to add headers and handle errors
+// Interceptor de peticiones y respuestas de axios para añadir cabeceras y gestionar errores
 export const AxiosInterceptor = () => {
 	const updateHeaders = (request: AxiosRequestConfig) => {
 		const token = localStorage.getItem('token') ?? '';

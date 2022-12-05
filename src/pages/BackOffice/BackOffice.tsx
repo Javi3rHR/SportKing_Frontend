@@ -4,7 +4,7 @@ import { PrivateRoutes } from '@/models';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const Sidebar2 = lazy(async () => await import('./components/Sidebar2'));
+const SidebarAdmin = lazy(async () => await import('./components/SidebarAdmin'));
 const Users = lazy(async () => await import('./Users/Users'));
 const AdminHome = lazy(async () => await import('./AdminHome/AdminHome'));
 const Reservations = lazy(async () => await import('./Reservations/Reservations'));
@@ -15,7 +15,7 @@ const TimeIntervals = lazy(async () => await import('./TimeIntervals/TimeInterva
 function BackOffice() {
 	return (
 		<div className='flex'>
-			<Sidebar2 />
+			<SidebarAdmin />
 			<Routes>
 				<Route path={PrivateRoutes.ADMINHOME} element={<AdminHome />} />
 				<Route path={PrivateRoutes.USERS} element={<Users />} />

@@ -1,4 +1,3 @@
-// import { useNavigate } from 'react-router-dom';
 import { UserInfo } from '@/models';
 import { createUser } from '@/redux/states/user';
 import { login } from '@/services';

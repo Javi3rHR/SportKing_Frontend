@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { PublicRoutes } from '../../models';
 import { resetUser, UserKey } from '../../redux/states/user';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function Logout({ open }: { open: boolean }) {
 	// const navigate = useNavigate();
@@ -41,10 +42,10 @@ function Logout({ open }: { open: boolean }) {
 	return (
 		<li
 			onClick={logOut}
-			className={`cursor-pointer items-center gap-x-4 rounded-md p-2 text-sm text-gray-300 hover:bg-slate-600`}
+			className={`mt-7 cursor-pointer items-center gap-x-4 rounded-md bg-slate-800 p-2 text-sm text-gray-300 hover:bg-slate-900`}
 		>
 			<div className='flex items-center space-x-3 rounded-md'>
-				<img src={`/src/pages/BackOffice/components/assets/Logout.png`} className='fill-' />
+				<LogoutIcon />
 				<span className={`${!open && 'hidden'} origin-left duration-200 `}>Logout</span>
 			</div>
 		</li>

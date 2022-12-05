@@ -1,16 +1,15 @@
+import LinearProgress from '@mui/material/LinearProgress';
+import { SnackbarProvider } from 'notistack';
 import { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { Footer } from './components';
 import { AuthGuard, LoginRedirectGuard, RoleGuard } from './guards';
 import { PrivateRoutes, PublicRoutes, Roles } from './models';
 import store from './redux/store';
 import { RoutesWithNotFound, SnackbarUtilitiesConfigurator } from './utils';
-import LinearProgress from '@mui/material/LinearProgress';
-import { SnackbarProvider } from 'notistack';
 
 // Lazy loading en el componente padre de cada ruta para mejorar el rendimiento
-const Home = lazy(async () => await import('./pages/Home/Home'));
+const Home = lazy(async () => await import('./pages/Home/home'));
 const Login = lazy(async () => await import('./pages/Login/Login'));
 const Register = lazy(async () => await import('./pages/Register/Register'));
 const Private = lazy(async () => await import('./pages/Private/Private'));
